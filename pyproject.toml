@@ -1,0 +1,70 @@
+[project]
+name = "rich_plasma"
+version = "0.1.0"
+description = "Rich Plasma"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "rich>=13.7.1",
+]
+packages = ["src/rich_plasma"]
+
+[project.scripts]
+rich_plasma = "rich_plasma.__main__:main"
+
+[tool.setuptools.package-data]
+rich_plasma = [
+    "py.typed",
+    "*/*.png",
+    "*/*.md",
+    "*/*.tcss",
+    "*.png",
+    "*.md",
+    "*.tcss"
+]
+
+[build-system]
+requires = ["hatchling", "wheel"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "build>=1.2.1",
+    "twine>=5.1.1",
+    "pyright>=1.1.379",
+    "pre-commit>=3.8.0",
+    "ruff>=0.7.0",
+    "types-orjson>=3.6.2",
+    "pyinstrument>=5.0.0",
+]
+
+[tool.hatch.version]
+path = "src/rich_plasma/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rich_plasma"]
+include = [
+    "*.py",
+    "py.typed",
+    "*.png",
+    "*.md",
+    "*.tcss",
+    "*.png",
+    "*.md",
+    "*.tcss"
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/rich_plasma",
+    "LICENSE",
+    "README.md",
+    "extraction_prompt.md",
+    "pyproject.toml"
+]
+exclude = [
+    "*.pyc",
+    "__pycache__",
+    "*.so",
+    "*.dylib"
+]
